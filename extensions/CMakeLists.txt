@@ -7,6 +7,7 @@ set(LIBRARY_SOURCES
     strikethrough.c
     autolink.c
     tagfilter.c
+    tasklist.c
     ext_scanners.c
     ext_scanners.re
     ext_scanners.h
