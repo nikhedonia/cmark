@@ -1,0 +1,14 @@
+cxx_binary(
+  name = 'api_test',
+  header_namespace = '',
+  headers = subdir_glob([
+    ('', '*.h'),
+  ]),
+  srcs = glob([
+    '*.c',
+    '*.cpp',
+  ]),
+  deps = [
+    '//:cmark',
+  ],
+)

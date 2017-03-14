@@ -38,3 +38,10 @@ alltests.md
 progit/
 bench/benchinput.md
 test/afl_results/
+
+# Buck
+/buck-out/
+/.buckd/
+/buckaroo/
+.buckconfig.local
+BUCKAROO_DEPS
