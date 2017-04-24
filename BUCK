@@ -3,7 +3,7 @@ def merge_dicts(x, y):
   z.update(y)
   return z
 
-MACOS_CONFIG_H = """
+CONFIG_H = """
 #ifndef CMARK_CONFIG_H
 #define CMARK_CONFIG_H
 
@@ -182,9 +182,9 @@ CMARKEXTENSIONS_EXPORT_H = """
 """
 
 genrule(
-  name = 'macos-config.h',
+  name = 'config.h',
   out = 'config.h',
-  cmd = 'echo "' + MACOS_CONFIG_H + '" > $OUT',
+  cmd = 'echo "' + CONFIG_H + '" > $OUT',
 )
 
 genrule(
@@ -211,14 +211,11 @@ cxx_library(
   exported_headers = merge_dicts(subdir_glob([
     ('src', '*.h'),
   ]), {
+    'config.h': ':config.h',
     'cmark_export.h': ':cmark_export.h',
     'cmark_version.h': ':cmark_version.h',
     'cmarkextensions_export.h': ':cmarkextensions_export.h',
   }),
-  exported_platform_headers = [
-    ('default', { 'config.h': ':macos-config.h' }),
-    ('^macos.*', { 'config.h': ':macos-config.h' }),
-  ],
   srcs = glob([
     'src/*.c',
   ]),
